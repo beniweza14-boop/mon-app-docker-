@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Ton application web
+  app:
+    build: .
+    container_name: mon_app_php
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+  # Ta base de données MySQL
+  db:
+    image: mysql:8.0
+    container_name: mon_mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: app_db_lubumbashi
+      MYSQL_ROOT_PASSWORD: Lubum_Dev_2026!
+    ports:
+      - "3306:3306"
